@@ -1,0 +1,1 @@
+- Operations notes for the Course Catalogue API.
