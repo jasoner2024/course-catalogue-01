@@ -15,6 +15,7 @@ To set up your laptop, see [GETTING-STARTED.md](GETTING-STARTED.md).
 | GET    | `/api/courses`        | Lists all courses                            |
 | GET    | `/api/courses/{code}` | Gets one course (code is case-insensitive)   |
 | POST   | `/api/courses`        | Creates a course                             |
+| GET    | `/api/courses?q=term` | Searches code and title (case-insensitive)   |
 
 Example request body for POST:
 
