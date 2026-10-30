@@ -140,7 +140,7 @@ public final class ApiServer {
         return new Response(200, Json.toJson(service.getCourse(code)));
     }
 
-    /** Returns the decoded value of a query paramter, or null if it is absent. */
+    /** Returns the decoded value of a query parameter, or null if it is absent. */
     private static String queryParam(HttpExchange exchange, String name) {
         String query = exchange.getRequestURI().getRawQuery();
         if (query == null) {
