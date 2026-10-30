@@ -16,6 +16,11 @@ class CourseTest {
     }
 
     @Test
+    void acceptsCodeWithSurroundingSpaces() {
+        assertEquals("COMP1001", new Course("  COMP1001 ", "Title", 4).code());
+    }
+
+    @Test
     void acceptsCodeWithSuffixLetter() {
         assertEquals("CS1010S", new Course("CS1010S", "Programming", 4).code());
     }

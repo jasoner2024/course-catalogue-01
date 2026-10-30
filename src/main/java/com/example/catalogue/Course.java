@@ -12,6 +12,7 @@ public record Course(String code, String title, int credits) {
     static final int MAX_TITLE_LENGTH = 120;
 
     public Course {
+        code = code == null ? null : code.strip();
         if (code == null || !CODE_PATTERN.matcher(code).matches()) {
             throw new IllegalArgumentException("Invalid course code: " + code);
         }
