@@ -2,3 +2,4 @@
 - GET /health returns {"status":"UP"}. GET /version returns the APP_VERSION value.
 - Sample: curl http://localhost:8080/api/courses/COMP1001
 - Set PORT to change the HTTP port (default 8080).
+- The container image runs as a non-root user on port 8080.
