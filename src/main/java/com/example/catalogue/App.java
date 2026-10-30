@@ -37,7 +37,7 @@ public final class App {
             return DEFAULT_PORT;
         }
         try {
-            int port = Integer.parseInt(value.trim());
+            final int port = Integer.parseInt(value.strip());
             if (port < 0 || port > 65535) {
                 throw new IllegalArgumentException("PORT must be between 0 and 65535: " + value);
             }
