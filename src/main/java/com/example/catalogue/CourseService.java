@@ -24,6 +24,7 @@ public final class CourseService {
                 .orElseThrow(() -> new CourseNotFoundException(normalised));
     }
 
+    /** Adds a course. Throws DuplicateCourseException if the code already exists. */
     public Course createCourse(Course course) {
         Objects.requireNonNull(course, "course");
         if (!repository.saveIfAbsent(course)) {
