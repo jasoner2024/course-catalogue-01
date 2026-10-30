@@ -17,6 +17,18 @@ public final class CourseService {
         return repository.findAll();
     }
 
+    /** Returns courses whose code or title contains the term, ignoring case. Blank term returns all. */
+    public List<Course> searchCourses(String term) {
+        if (term == null || term.isBlank()) {
+            return listCourses();
+        }
+        String needle = term.trim().toLowerCase(Locale.ROOT);
+        return repository.findAll().stream()
+                .filter(c -> c.code().toLowerCase(Locale.ROOT).contains(needle)
+                        || c.title().toLowerCase(Locale.ROOT).contains(needle))
+                .toList();
+    }
+
     /** Looks up a course. The code is matched case-insensitively. */
     public Course getCourse(String code) {
         String normalised = code == null ? "" : code.trim().toUpperCase(Locale.ROOT);
