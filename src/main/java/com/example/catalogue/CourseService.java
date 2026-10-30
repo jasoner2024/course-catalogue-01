@@ -13,6 +13,7 @@ public final class CourseService {
         this.repository = Objects.requireNonNull(repository, "repository");
     }
 
+    /** Returns all courses, sorted by code. */
     public List<Course> listCourses() {
         return repository.findAll();
     }
