@@ -1,1 +1,2 @@
 - Operations notes for the Course Catalogue API.
+- GET /health returns {"status":"UP"}. GET /version returns the APP_VERSION value.
