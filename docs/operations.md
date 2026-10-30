@@ -1,2 +1,3 @@
 - Operations notes for the Course Catalogue API.
 - GET /health returns {"status":"UP"}. GET /version returns the APP_VERSION value.
+- Sample: curl http://localhost:8080/api/courses/COMP1001
