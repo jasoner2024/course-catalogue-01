@@ -117,7 +117,7 @@ public final class ApiServer {
 
         if (rest.isEmpty() || rest.equals("/")) {
             return switch (method) {
-                case "GET" -> new Response(200, Json.toJson(service.listCourses()));
+                case "GET" -> new Response(200, Json.toJson(service.searchCourses(queryParam(exchange, "q"))));
                 case "POST" -> {
                     Course created = service.createCourse(Course.fromJson(readBody(exchange)));
                     exchange.getResponseHeaders().set("Location", COURSES_PATH + "/" + created.code());
@@ -138,6 +138,23 @@ public final class ApiServer {
             return methodNotAllowed(exchange, "GET");
         }
         return new Response(200, Json.toJson(service.getCourse(code)));
+    }
+
+    /** Returns the decoded value of a query paramter, or null if it is absent. */
+    private static String queryParam(HttpExchange exchange, String name) {
+        String query = exchange.getRequestURI().getRawQuery();
+        if (query == null) {
+            return null;
+        }
+        for (String pair : query.split("&")) {
+            int eq = pair.indexOf('=');
+            String key = eq < 0 ? pair : pair.substring(0, eq);
+            if (key.equals(name)) {
+                String value = eq < 0 ? "" : pair.substring(eq + 1);
+                return java.net.URLDecoder.decode(value, StandardCharsets.UTF_8);
+            }
+        }
+        return null;
     }
 
     private static String readBody(HttpExchange exchange) throws IOException {
