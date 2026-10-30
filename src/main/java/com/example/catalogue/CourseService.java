@@ -19,7 +19,7 @@ public final class CourseService {
 
     /** Looks up a course. The code is matched case-insensitively. */
     public Course getCourse(String code) {
-        final String normalised = code == null ? "" : code.trim().toUpperCase(Locale.ROOT);
+        final String normalised = code == null ? "" : code.strip();
         return repository.findByCode(normalised)
                 .orElseThrow(() -> new CourseNotFoundException(normalised));
     }
