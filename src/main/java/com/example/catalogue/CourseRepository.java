@@ -20,6 +20,7 @@ public final class CourseRepository {
         return repository;
     }
 
+    /** Returns all courses, sorted by code. */
     public List<Course> findAll() {
         return courses.values().stream()
                 .sorted(Comparator.comparing(Course::code))
